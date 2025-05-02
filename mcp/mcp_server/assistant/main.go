@@ -18,6 +18,7 @@ func main() {
     )
 
 	tools.RegisterCaculatorTool(s)
+    tools.RegisterWiresharkTool(s)
 
     // Start the server
     if err := server.ServeStdio(s); err != nil {
