@@ -8,9 +8,9 @@ from vector import retriver
 model = OllamaLLM(model="qwen2.5")
 
 template = """
-You are an expert in answering questions about the weather.
+You are an expert in answering questions about the tv shows.
 
-Here are some relevant reviesw: {reviews}
+Here are some relevant reviews: {reviews}
 
 Here is the question to answer: {question}  
 """
@@ -25,4 +25,13 @@ while True:
     
     reviews = retriver.invoke(question)
     result = chain.invoke({"reviews": reviews,"question": question,})
+    print("-" * 30)
     print(result)
+    print("+" * 30)
+    
+    
+    """
+    provide stats about game of throne
+     list top rated tv shows on action genre
+    what is the best tv show to watch that came after year 2010
+    """

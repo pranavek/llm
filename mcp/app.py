@@ -1,3 +1,7 @@
+"""
+https://www.youtube.com/watch?v=bwwvsvU-670
+
+"""
 from praisonaiagents import Agent, MCP
 
 search_agent = Agent(
