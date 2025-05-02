@@ -12,9 +12,13 @@ assistant_server = MCPServerStdio(
     ]
 )
 
-duckduckgo_server = MCPServerStdio(
+local_rag_server = MCPServerStdio(
     'uvx',
-    args=["duckduckgo-mcp-server"]
+    args=[
+        "--from",
+        "git+https://github.com/nkapila6/mcp-local-rag",
+        "mcp-local-rag"
+    ]
 )
 
 ollama_model = OpenAIModel(
@@ -23,11 +27,10 @@ ollama_model = OpenAIModel(
 )
 agent = Agent(
     model=ollama_model, 
-    mcp_servers=[assistant_server, duckduckgo_server],
+    mcp_servers=[assistant_server, local_rag_server],
     instuctions="""
-        You are a helpful assistant. You can use the DuckDuckGo search engine to find information.
-        You can also run a Go program to perform tasks.
-        """
+    You are a helpful assistant. You can use the DuckDuckGo search engine to find information.
+    """,
 )
 
 
@@ -38,7 +41,7 @@ async def main():
             if not prompt:
                 break
             result = await agent.run(prompt)
-            print(result.output+"\n")
+            print(result.output+"\n\n")
 
 if __name__ == "__main__":
     asyncio.run(main())
