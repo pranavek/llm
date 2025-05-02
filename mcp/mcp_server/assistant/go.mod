@@ -10,4 +10,4 @@ require (
 	github.com/yosida95/uritemplate/v3 v3.0.2 // indirect
 )
 
-replace github.com/pranavek/k8s-mcp/tools => ./tools
+replace github.com/pranavek/assistant-mcp/tools => ./tools
